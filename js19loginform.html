@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+header{
+        display: flex;
+        width: 100%;
+        height: auto;
+        background-color: black;
+        color: aliceblue;
+        align-items: center;
+    }
+    .logo{
+        flex-grow: 1;
+
+    }
+    .menus{
+        flex-grow: 2;
+       justify-content: center;
+    }
+    .menus ul{
+        align-items: center;
+       display: flex;
+       gap: 30px;
+       justify-content: left;
+    }
+    .menus ul li{
+        list-style: none;
+    }
+    .menus ul li a{
+        list-style: none;
+        text-decoration: none;
+        color: white;
+    }
+
+    .login-container {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 50px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1), 0px 0px 0px 3px #3498db, inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+  font-size: x-large;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-header h1 {
+  color: #333;
+  font-size: 24px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 4px;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#login {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #3498db;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1), inset 0px 1px 3px rgba(255, 255, 255, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#login:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+</style>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>AviTech</h1>
+        </div>
+        <div class="menus">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Conatct</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+     </header>
+
+    <div class="login-container">
+        <div class="login-header">
+          <div>Login</div>
+        </div>
+        <input type="text" class="login-input" placeholder="Username" id="username">
+        <div class="usererror" id="uerror"></div>
+        <input type="text" class="login-input" placeholder="Password" id="password" onkeypress="return check(event);">
+        <div class="passerroe" id="perror"></div>
+        <button class="login-button" id="login">Login</button>
+      </div>
+
+      <script>
+        function check(e){
+          var aCode = e.which?e.which:e.keyCode;
+
+          if((aCode >48 && aCode<58) || aCode==64)
+          {
+              document.getElementById('password').innerHTML="Perfect" 
+              alert("login sucessfull")
+              return true;
+          }else{
+              document.getElementById('password').innerHTML="only use numbers" 
+              return false;
+          }
+
+      }
+     document.getElementById('login').addEventListener('click',(e)=>{
+        let user=document.getElementById('username').value;
+        let userpattern=/^[A-Z]{1}[a-z0-9]{1,10}[@][a-z]{3,10}[.][a-z]{1,10}$/;
+
+        
+        
+        
+       
+        if(!(userpattern.test(user))){
+            document.getElementById('uerror').innerHTML="write corect email ex.(avitech@gmail.com)"
+        }
+        else{
+            document.getElementById('uerror').innerHTML="Perfect" 
+
+        }
+
+     })
+
+
+      </script>
+</body>
+</html>

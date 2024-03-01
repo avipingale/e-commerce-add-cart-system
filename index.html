@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        scroll-behavior:smooth ;
+    }
+    header{
+        display: flex;
+        width: 100%;
+        height: auto;
+        background-color: black;
+        color: aliceblue;
+        align-items: center;
+    }
+    .logo{
+        flex-grow: 1;
+
+    }
+    .menus{
+        flex-grow: 2;
+       justify-content: center;
+    }
+    .menus ul{
+        align-items: center;
+       display: flex;
+       gap: 30px;
+       justify-content: left;
+    }
+    .menus ul li{
+        list-style: none;
+    }
+    .menus ul li a{
+        list-style: none;
+        text-decoration: none;
+        color: white;
+    }
+    .cart{
+        flex-grow: 3;
+        justify-content: flex-end;
+        transition: .5s;
+    }
+    .cart .CartBtn {
+  width: 140px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(255, 208, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: .5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+}
+
+.cart .IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: .5s;
+}
+
+.cart .icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(17, 17, 17);
+  z-index: 1;
+  transition-duration: .5s;
+  font-size: 1.04em;
+  font-weight: 600;
+}
+
+.CartBtn:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: .5s;
+}
+
+.CartBtn:hover .text {
+  transform: translate(10px,0px);
+  transition-duration: .5s;
+}
+
+.CartBtn:active {
+  transform: scale(0.95);
+  transition-duration: .5s;
+}
+
+
+.login{
+    flex-grow: 4;
+}
+
+.login button , .addc {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid rgb(61, 106, 255);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.login button:hover ,.addc:hover {
+  background: rgb(61, 106, 255);
+  box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.login button:hover::before,.addc:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+.login button::before,.addc ::before{
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.login button:active ,.addc:active{
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
+
+
+.itmes,.cart-itme{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: O auto;
+}
+.addc{
+    width: 100%;
+    text-align: center;
+    background-color: rgb(45, 218, 29);
+    color: black;
+}
+.tilt{
+    width: 100%;
+    text-align: center;
+    background-color: rgb(208, 255, 0);
+    color: black;  
+}
+
+    
+</style>
+
+<body>
+ <header>
+    <div class="logo">
+        <h1>AviTech</h1>
+    </div>
+    <div class="menus">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Conatct</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+    <div class="cart">
+        <a href="#cart">
+        <button class="CartBtn">
+            <span class="IconContainer"> 
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
+            </span>
+            <p class="text">Add to Cart</p>
+          </button></a>
+    </div>
+    <div class="login">
+       <a href="js19loginform.html"> <button>
+           
+           Login
+          </button></a>
+    </div>
+ </header>
+
+
+
+    <div class="itmes">
+        <div class="itme-contenor">
+            <img src="spider.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">spider Man</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="iron.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">iron Man</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="hulk.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">hulk</h1>
+            <button type="button" class="addc">Add Cart</button>
+
+        </div>
+        <div class="itme-contenor">
+            <img src="spider.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">spder Mn</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="iron.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">ion Man</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="spider.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">sper Man</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="iron.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">iro M</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="hulk.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">hul</h1>
+            <button type="button" class="addc">Add Cart</button>
+
+        </div>
+        <div class="itme-contenor">
+            <img src="hulk.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">ulk</h1>
+            <button type="button" class="addc">Add Cart</button>
+
+        </div>
+        <div class="itme-contenor">
+            <img src="spider.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">spidr Man</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="spider.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">spier Man</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+        <div class="itme-contenor">
+            <img src="iron.jpg" alt="" width="200px" height="200px" class="pimg">
+            <h1 class="title">ron Man</h1>
+            <button type="button" class="addc">Add Cart</button>
+        </div>
+    </div>
+ <div class="tilt"><h1>cart-itmes</h1></div>
+    <div class="cart-itme" id="cart"></div>
+
+
+    <script>
+        let addbutton= document.getElementsByClassName('addc');
+        for(let i=0; i<addbutton.length;i++){
+            let button=addbutton[i];
+          button.addEventListener('click',itmetarget);
+        }
+        function itmetarget(n){
+            let btn=n.target.parentElement;
+            let itme_title=btn.getElementsByClassName('title')[0].innerHTML;
+            let itme_image=btn.getElementsByClassName('pimg')[0].getAttribute('src');
+            addtocat(itme_title,itme_image);
+        }
+        function addtocat(it,iimg){
+            let cre_itme=document.createElement('div')
+            cre_itme.setAttribute('class','cart-itmes')
+
+            let target=document.getElementsByClassName('cart-itme')[0];
+
+            let norepeat=document.getElementsByClassName('ptitle');
+
+            for(let i=0;i<norepeat.length;i++)
+            {
+                if(norepeat[i].innerHTML==it)
+                {
+                    alert("item alredy in a cart")
+                    return;
+                }
+            }
+            let shtml=`<h1 class='ptitle'>${it}</h1><img src='${iimg}' class='pimg' width='200px' height='200px'>
+            <button type='button' class='removebut'>Remove itme</button>`;
+            cre_itme.innerHTML=shtml;
+            target.appendChild(cre_itme)
+
+            let removeCart= document.getElementsByClassName('removebut');
+            for(let i=0;i<removeCart.length;i++){
+                removeCart[i].addEventListener('click',removebutton);
+            }
+        }
+        function removebutton(n){
+            let rbtn=n.target.parentElement;
+            let target= rbtn.parentElement;
+
+            target.removeChild(rbtn);
+        }
+    </script>
+</body>
+</html>
